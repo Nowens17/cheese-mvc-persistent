@@ -17,6 +17,10 @@ public class Category {
     @Size(min=3, max=15)
     private String name;
 
+    @OneToMany
+    @JoinColumn(name = "category_id")
+    private List<Cheese> cheeses = new ArrayList<>();
+
     public Category (){
 
     }
@@ -37,8 +41,7 @@ public class Category {
         this.name = name;
     }
 
-    @OneToMany
-    @JoinColumn(name = "category_id")
-    private List<Cheese> cheeses = new ArrayList<>();
-
+    public List<Cheese> getCheeses() {
+        return cheeses;
+    }
 }
